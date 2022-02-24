@@ -5,8 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock - Paper - Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="rps.js" defer></script>
 </head>
-<body>
-    <script src="rps.js"></script>
+<body class="page">
+    <section class="player-choices">
+        <div role="button" class="choice" data-play="rock">  
+            <p class="icon rock"></p>  
+            <p class="text">ROCK</p>
+        </div>
+        <div role="button" class="choice" data-play="paper">
+            <p class="icon paper"></p>  
+            <p class="text">PAPER</p>    
+        </div>
+        <div role="button" class="choice" data-play="scissors"> 
+            <p class="icon scissors"></p>  
+            <p class="text">SCISSORS</p>   
+        </div>
+    </section>
 </body>
 </html>

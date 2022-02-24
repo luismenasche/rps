@@ -1,4 +1,15 @@
-const playArray = ["rock", "paper", "scissors"];
+function play(ev) {
+    let c = ev.currentTarget.getAttribute("data-play");
+    console.log(c);
+}
+
+const choices = document.querySelectorAll(".choice");
+
+for (let c of choices) {
+    c.addEventListener("click", play);
+}
+
+/*const playArray = ["rock", "paper", "scissors"];
 
 function computerPlay() {
     return Math.floor(Math.random() * 3);
@@ -43,4 +54,4 @@ function game() {
         console.log("It ended in a draw!");
 }
 
-game();
+game();*/
