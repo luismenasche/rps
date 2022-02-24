@@ -1,34 +1,59 @@
-function play(ev) {
-    let c = ev.currentTarget.getAttribute("data-play");
-    console.log(c);
-}
+const playArray = ["rock", "paper", "scissors"];
+
+const pv = document.querySelector(".info__pvalue");
+const cv = document.querySelector(".info__cvalue");
+const res = document.querySelector(".info__result");
 
 const choices = document.querySelectorAll(".choice");
-
 for (let c of choices) {
-    c.addEventListener("click", play);
+    c.addEventListener("click", playRound);
 }
 
-/*const playArray = ["rock", "paper", "scissors"];
-
-function computerPlay() {
-    return Math.floor(Math.random() * 3);
- }
-
-function playRound(playerSelection, computerSelection) {
+function playRound(ev) {
+    let playerSelection = Number(ev.currentTarget.getAttribute("data-play"));
+    let computerSelection = Math.floor(Math.random() * 3);
+    let newValue, winner;
     if (playerSelection == computerSelection)
-        return 0;
+        return;
     else if (playerSelection + computerSelection == 2) {
-        if (playerSelection == 0)
-            return 1;
-        else
-            return -1;
+        if (playerSelection == 0) {
+            winner = 0;
+            newValue = increase(pv);
+        }
+        else {
+            winner = 1;
+            newValue = increase(cv);
+        }
     }
-    else
-        return playerSelection - computerSelection;
+    else if (playerSelection - computerSelection > 0) {
+        winner = 0;
+        newValue = increase(pv);
+    }
+    else {
+        winner = 1;
+        newValue = increase(cv);
+    }
+    if (newValue == 5) {
+        for (let c of choices) {
+            c.removeEventListener("click", playRound);
+        }
+        res.style.color = "green";
+        if (winner == 0) {
+            res.textContent = "The Player WON!!!";
+        }
+        else {
+            res.textContent = "The Computer WON!!!";
+        }
+    }
 }
 
-function game() {
+function increase(value) {
+    let newValue = Number(value.textContent) + 1;
+    value.textContent = String(newValue);
+    return newValue;
+}
+
+/*function game() {
     let psText, ps, cs, r;
     let pg = 0;
     let cg = 0;

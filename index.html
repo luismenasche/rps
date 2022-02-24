@@ -9,16 +9,28 @@
     <script src="rps.js" defer></script>
 </head>
 <body class="page">
+    <h1 class="title">Rock, Paper, Scissors</h1>
+    <hr>
+    <section class="info">
+        <p class="info__player">Player Victories: 
+            <span class="info__pvalue">0</span>
+        </p>
+        <p class="info__result">The game is still open...</p>
+        <p class="info__computer">Computer Victories: 
+            <span class="info__cvalue">0</span>
+        </p>
+    </section>
+    <hr>
     <section class="player-choices">
-        <div role="button" class="choice" data-play="rock">  
+        <div role="button" class="choice" data-play="0">  
             <p class="icon rock"></p>  
             <p class="text">ROCK</p>
         </div>
-        <div role="button" class="choice" data-play="paper">
+        <div role="button" class="choice" data-play="1">
             <p class="icon paper"></p>  
             <p class="text">PAPER</p>    
         </div>
-        <div role="button" class="choice" data-play="scissors"> 
+        <div role="button" class="choice" data-play="2"> 
             <p class="icon scissors"></p>  
             <p class="text">SCISSORS</p>   
         </div>
