@@ -1,6 +1,6 @@
 :root {
     color: white;
-    font-family: sans-serif;
+    font-family: Verdama, sans-serif;
     font-size: 12pt;
 }
 
@@ -43,21 +43,18 @@
     font-size: 1.1rem;
     justify-content: space-between;
     padding: 20px;
-    width: 25%;
+    text-align: center;
+    width: 30%;
 }
 
 .score__result {
     color: red;
     font-weight: bold;
-    text-align: center;
+    padding: 20px 0;
 }
 
 .selector {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 75%;
+    width: 70%;
 }
 
 .subtitle {
@@ -67,14 +64,19 @@
     text-align: center;
 }
 
-.round-number {
+.score__ppoints, .score__cpoints, .round-number {
     color: orange;
+    font-weight: bold;
 }
 
 .player-choices {
+    align-items: center;
     display: flex;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0 auto;
     padding: 20px;
-    width: fit-content;
+    width: 90%;
 }
 
 .choice {
@@ -82,12 +84,14 @@
     border: 2px solid white;
     display: flex;
     flex-direction: column;
-    height: 150px;
+    height: 10vw;
     justify-content: center;
-    margin: 0 20px;
+    margin: 0 2px;
+    min-height: 100px;
+    min-width: 100px;
     padding: 20px;
     text-align: center;
-    width: 150px;
+    width: 10vw;
 }
 
 .icon {
@@ -112,18 +116,6 @@
     font-weight: bold;
 }
 
-.rock::before {
-    content: "\1F44A";
-}
-
-.paper::before {
-    content: "\270B";
-}
-
-.scissors::before {
-    content: "\270C\FE0F";
-}
-
 .rounds {
     height: 40vh;
     overflow-y: auto;
@@ -144,4 +136,61 @@ th, td {
 
 th {
     font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        font-size: 10pt;
+    }
+    
+    .title {
+        padding: 10px 0;
+    }
+
+    .columns {
+        flex-direction: column;
+    }
+    
+    .score {
+        border-right: none;
+        flex-direction: row;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .score__result {
+        padding: 0;
+    }
+
+    .selector {
+        border-top: 2px solid white;
+        width: 100%;
+    }
+
+    .choice {
+        min-height: 85px;
+        min-width: 85px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 2.5rem;
+        padding: 7px 0;
+    }
+    
+    .score {
+        padding: 7px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        font-size: 9pt;
+    }
+
+    th, td {
+        font-size: 1rem;
+        padding: 3px;
+    }
 }

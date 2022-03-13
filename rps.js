@@ -16,6 +16,7 @@ const table = document.querySelector(".rounds__table");
 let roundCounter = 1;
 
 function playRound(ev) {
+    ev.stopPropagation();
     let tr = document.createElement("tr");
     let td = document.createElement("td");
     td.textContent = `#${roundCounter}`;
@@ -59,14 +60,14 @@ function increase(value) {
         }
         res.style.color = "green";
         if (value.classList.contains("score__ppoints")) {
-            res.innerHTML = "The Player WON!!!<br>(Click here to play again)";
+            res.innerHTML = "The Player WON!!!<br>(Click to play again)";
         }
         else {
-            res.innerHTML = "The Computer WON!!!<br>(Click here to play again)";
+            res.innerHTML = "The Computer WON!!!<br>(Click to play again)";
         }
         selector.style.display = "none";
         score.style.width = "100%";
-        score.addEventListener("click", reset, {once: true});
+        document.body.addEventListener("click", reset, {once: true});
     }
 }
 
