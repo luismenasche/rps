@@ -1,28 +1,17 @@
-const playArray = ["\u{1F44A}", "\u270B", "\u270C\uFE0F"];
-
-const score = document.querySelector(".score");
-const pv = document.querySelector(".score__ppoints");
-const cv = document.querySelector(".score__cpoints");
-const res = document.querySelector(".score__result");
-const selector = document.querySelector(".selector");
-const choices = document.querySelectorAll(".choice");
-for (let c of choices) {
-    c.addEventListener("click", playRound);
+function setSizes() {
+    const main = document.querySelector(".main");
+    const rounds = document.querySelector(".rounds");
+    rounds.style.height = 
+        String(window.innerHeight - main.offsetHeight) + "px";
 }
-const roundNumber = document.querySelector(".round-number");
-const rounds = document.querySelector(".rounds");
-const table = document.querySelector(".rounds__table");
 
-let roundCounter = 1;
+const playArray = ["\u{1F44A}", "\u270B", "\u270C\uFE0F"];
 
 function playRound(ev) {
     ev.stopPropagation();
-    let tr = document.createElement("tr");
-    let td = document.createElement("td");
-    td.textContent = `#${roundCounter}`;
-    tr.appendChild(td);
+    let tr = document.getElementById("currentRow");
     let playerSelection = Number(ev.currentTarget.getAttribute("data-play"));
-    td = document.createElement("td");
+    let td = document.createElement("td");
     td.textContent = playArray[playerSelection];
     tr.appendChild(td);
     let computerSelection = Math.floor(Math.random() * 3);
@@ -30,25 +19,32 @@ function playRound(ev) {
     td.textContent = playArray[computerSelection];
     tr.appendChild(td);
     td = document.createElement("td");
+    let quit;
     if (playerSelection == computerSelection)
         td.textContent = "Draw";    
     else if (((playerSelection == 0) && (computerSelection == 2)) || 
         (playerSelection == 1) && (computerSelection == 0) ||
         (playerSelection == 2) && (computerSelection == 1)) {
-            increase(pv);
+            quit = increase(pv);
             td.textContent = "The Player won this round";
     }
     else {
-        increase(cv);
+        quit = increase(cv);
         td.textContent = "The Computer won this round"
     }
     tr.appendChild(td);
-    table.appendChild(tr);
-    tr.scrollIntoView();
+    if (quit)
+        return;
     roundCounter++;
     roundNumber.textContent = String(roundCounter);
-    if (roundCounter == 2)
-        rounds.style.visibility = "visible";
+    tr.removeAttribute("id");
+    tr = document.createElement("tr");
+    tr.id = "currentRow";
+    td = document.createElement("td");
+    td.textContent = `#${roundCounter}`;
+    tr.appendChild(td);
+    table.appendChild(tr);
+    tr.scrollIntoView();
 }
 
 function increase(value) {
@@ -57,20 +53,41 @@ function increase(value) {
     if (newValue == 5) {
         for (let c of choices) {
             c.removeEventListener("click", playRound);
+            c.style.opacity = "0.3";
+            c.classList.remove("choice-hover");
         }
-        res.style.color = "green";
+        res.style.color = "hsl(120,100%,75%)";
         if (value.classList.contains("score__ppoints")) {
-            res.innerHTML = "The Player WON!!!<br>(Click to play again)";
+            res.textContent = "The Player WON!!!";
         }
         else {
-            res.innerHTML = "The Computer WON!!!<br>(Click to play again)";
+            res.textContent = "The Computer WON!!!";
         }
-        selector.style.display = "none";
-        score.style.width = "100%";
+        subtitle.textContent = "Click anywhere to play again";
+        subtitle.style.fontWeight = "bold";
         document.body.addEventListener("click", reset, {once: true});
+        return 1;
     }
+    return 0;
 }
 
 function reset() {
     window.location.reload();
 }
+
+window.addEventListener("load", setSizes);
+window.addEventListener("resize", setSizes);
+
+const pv = document.querySelector(".score__ppoints");
+const cv = document.querySelector(".score__cpoints");
+const res = document.querySelector(".score__result");
+const subtitle = document.querySelector(".subtitle");
+const choices = document.querySelectorAll(".choice");
+for (let c of choices) {
+    c.addEventListener("click", playRound);
+}
+
+const roundNumber = document.querySelector(".round-number");
+const table = document.querySelector(".rounds__table");
+
+let roundCounter = 1;

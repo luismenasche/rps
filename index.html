@@ -16,45 +16,45 @@
 <body class="page">
   <main class="main">
     <h1 class="title">Rock, Paper, Scissors</h1>
-    <div class="columns">
-      <div class="score">
-        <p class="score__player">Player Victories:
-          <span class="score__ppoints">0</span>
-        </p>
-        <p class="score__result">The game is still open...</p>
-        <p class="score__computer">Computer Victories:
-          <span class="score__cpoints">0</span>
-        </p>
-      </div>
-      <div class="selector">
-        <h2 class="subtitle">
-          Make your choice for round #<span class="round-number">1</span>
-        </h2>
-        <div class="player-choices">
-          <div role="button" class="choice" data-play="0">
-            <p class="icon">&#x1F44A;</p>
-            <p class="text">ROCK</p>
-          </div>
-          <div role="button" class="choice" data-play="1">
-            <p class="icon">&#x270B;</p>
-            <p class="text">PAPER</p>
-          </div>
-          <div role="button" class="choice" data-play="2">
-            <p class="icon">&#x270C;&#xFE0F;</p>
-            <p class="text">SCISSORS</p>
-          </div>
+    <div class="score">
+      <p class="score__player">Player Victories:
+        <span class="score__ppoints">0</span>
+      </p>
+      <p class="score__result">The game is still open...</p>
+      <p class="score__computer">Computer Victories:
+        <span class="score__cpoints">0</span>
+      </p>
+    </div>
+    <div class="selector">
+      <h2 class="subtitle">
+        Make your choice for round #<span class="round-number">1</span>
+      </h2>
+      <div class="player-choices">
+        <div role="button" class="choice choice--hover" data-play="0">
+          <p class="icon">&#x1F44A;</p>
+          <p class="text">ROCK</p>
+        </div>
+        <div role="button" class="choice choice--hover" data-play="1">
+          <p class="icon">&#x270B;</p>
+          <p class="text">PAPER</p>
+        </div>
+        <div role="button" class="choice choice--hover" data-play="2">
+          <p class="icon">&#x270C;&#xFE0F;</p>
+          <p class="text">SCISSORS</p>
         </div>
       </div>
     </div>
   </main>
   <aside class="rounds">
-    <h2 class="subtitle">Results of the Rounds Played</h2>
     <table class="rounds__table">
       <tr>
         <th>Round Number</th>
         <th>Player's Choice</th>
         <th>Computer's Choice</th>
         <th>Round Result</th>
+      </tr>
+      <tr id="currentRow">
+        <td>#1</td>
       </tr>
     </table>
   </aside>
