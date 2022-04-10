@@ -20,10 +20,16 @@
 }
 
 .title {
-    border-bottom: 2px solid white;
     font-size: 3rem;
     font-weight: normal;
-    padding: 20px 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.author {
+    border-bottom: 2px solid white;
+    font-size: 0.9rem;
+    padding-bottom: 10px;
     text-align: center;
 }
 
