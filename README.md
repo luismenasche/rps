@@ -12,4 +12,4 @@ The webpage was built to work and display well both on computers and mobile devi
 
 ## Live Webpage
 
-https://luismenasche.github.io/odin-rps/
+https://luismenasche.github.io/rps/
